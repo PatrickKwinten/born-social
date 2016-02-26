@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:dataTable id="dataTable1" rows="30" var="entry" styleClass="lotusTable">
+        <xp:this.value><![CDATA[#{javascript:ServiceBean.getMyFiles();
+        }]]></xp:this.value>
+        <xp:column id="column5" style="width:20px;">
+        	<xp:this.facets></xp:this.facets>
+        	<xp:image id="image2">
+        		<xp:this.url><![CDATA[#{javascript:var docType:String = entry.getLabel().substring(entry.getLabel().lastIndexOf(".")+1,entry.getLabel().length);
+if (docType.equals("pdf")) {
+    return "/icon_pdf.png";
+} else if (docType.equals("xls") || docType.equals("xlsx")) {
+    return "/icon_spreadsheet.png";
+} else if (docType.equals("doc") || docType.equals("docx")) {
+    return "/icon_text.png";
+} else if (docType.equals("ppt") || docType.equals("pptx")) {
+    return "/icon_presentation.png";
+} else if (docType.equals("jpg") || docType.equals("jpeg") || docType.equals("gif") || docType.equals("png")) {
+    return "/icon_image.png";
+} else {
+    return "";
+}}]]></xp:this.url>
+        	</xp:image>
+        </xp:column>
+        <xp:column id="column1">
+       	<xp:this.facets>
+       		<xp:label value="File Name" id="label1" xp:key="header"></xp:label>
+       	</xp:this.facets>
+       	<h4>
+       		<xp:link escape="true" text="#{javascript:' ' + entry.getLabel()}" id="link1" styleClass="lotusTitle">
+       			<xp:this.value><![CDATA[#{javascript:return "./xsp/.proxy/files/connections/connections/"+entry.getLabel()+
+"?type=connections&id="+entry.getFileId()+"&repId="+entry.getLibraryId()+"&fileName="+entry.getLabel()+"&endpointName=connections";}]]></xp:this.value>
+       		</xp:link>
+       	</h4>
+       </xp:column>
+       <xp:column id="column2">
+            <xp:this.facets>
+                <xp:label value="Author" id="label2" xp:key="header"></xp:label>
+            </xp:this.facets>
+            <xp:text escape="true" id="computedField2" value="#{javascript:entry.getAuthor().getName()}"></xp:text>
+        </xp:column>
+       <xp:column id="column3" styleClass="lotusMeta lotusNowrap">
+       	<xp:this.facets>
+       		<xp:label value="Created" id="label3" xp:key="header"></xp:label>
+       	</xp:this.facets>
+       	<xp:text escape="true" id="computedField3" value="#{javascript:entry.getCreated()}">
+       	</xp:text>
+       </xp:column>
+       <xp:column id="column4" styleClass="lotusMeta lotusNowrap">
+       	<xp:text escape="true" id="computedField4" value="#{javascript:entry.getSize()/1000}">
+       		<xp:this.converter>
+       			<xp:convertNumber type="number" integerOnly="false"></xp:convertNumber>
+       		</xp:this.converter>
+       	</xp:text>
+       	<xp:this.facets>
+       		<xp:label value="Size (KB)" id="label4" xp:key="header">
+       		</xp:label>
+       	</xp:this.facets>
+       </xp:column>
+    </xp:dataTable>
+</xp:view>

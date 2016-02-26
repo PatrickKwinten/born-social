@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	
+	<xe:applicationLayout id="applicationLayout1">
+
+		<xp:callback
+			facetName="facet_2"
+			id="callback2">
+		</xp:callback>
+		<xp:this.facets>
+			<xp:callback
+				facetName="facet_3"
+				id="callback3"
+				xp:key="RightColumn">
+			</xp:callback>
+			<xp:callback
+				facetName="facet_1"
+				id="callback1"
+				xp:key="LeftColumn">
+			</xp:callback>
+		</xp:this.facets>
+		<xe:this.configuration>
+			<xe:oneuiApplication
+				titleBarName="#{javascript:@DbTitle()}"
+				placeBarName="An XPages Mashup app using the SBT SDK">
+				<xe:this.footerLinks>
+					<xe:basicContainerNode label="Container 1">
+						<xe:this.children>
+							<xe:basicLeafNode
+								label="Link 1"
+								href="/">
+							</xe:basicLeafNode>
+							<xe:basicLeafNode
+								label="Link 2"
+								href="/">
+							</xe:basicLeafNode>
+						</xe:this.children>
+					</xe:basicContainerNode>
+					<xe:basicContainerNode label="Container 2">
+						<xe:this.children>
+							<xe:basicLeafNode
+								label="Link 1"
+								href="/">
+							</xe:basicLeafNode>
+							<xe:basicLeafNode
+								label="Link 2"
+								href="/">
+							</xe:basicLeafNode>
+						</xe:this.children>
+					</xe:basicContainerNode>
+				</xe:this.footerLinks>
+				<xe:this.bannerApplicationLinks>
+
+<xe:pageTreeNode
+						label="Activity Stream"
+						page="/indexActivityStream.xsp"
+						title="Information from the Activity Stream">
+					</xe:pageTreeNode>
+					<xe:pageTreeNode
+						label="Blogs"
+						page="/indexBlogRelated.xsp"
+						title="Blog related interfaces">
+					</xe:pageTreeNode>
+					<xe:pageTreeNode
+						label="Bookmarks"
+						page="/indexBookmarks.xsp">
+					</xe:pageTreeNode>
+					<xe:pageTreeNode
+						label="Communities"
+						page="/indexCommunities.xsp">
+					</xe:pageTreeNode>
+					<xe:pageTreeNode label="Profiles">
+						<xe:this.children>
+						<xe:pageTreeNode
+							label="Overview"
+							page="/indexProfiles.xsp">
+						</xe:pageTreeNode>
+						<xe:pageTreeNode
+								label="Search"
+								page="/indexProfilSearch.xsp">	
+							</xe:pageTreeNode>
+						</xe:this.children>
+					</xe:pageTreeNode>
+					<xe:pageTreeNode
+						label="Forums"
+						page="/indexForums.xsp">
+					</xe:pageTreeNode>
+				</xe:this.bannerApplicationLinks>
+				<xe:this.bannerUtilityLinks>
+					<xe:basicLeafNode
+						label="Greenhouse - Connections"
+						href="https://greenhouse.lotus.com/homepage/web/gettingStarted/"
+						title="Open link...">
+					</xe:basicLeafNode>
+					<xe:basicLeafNode
+						label="SBT SDK Playground"
+						href="https://greenhouse.lotus.com/sbt/SBTPlayground.nsf/"
+						title="Open link...">
+					</xe:basicLeafNode>
+				</xe:this.bannerUtilityLinks>
+			</xe:oneuiApplication>
+		</xe:this.configuration>
+	</xe:applicationLayout>
+
+	<xc:appPartialRefresh></xc:appPartialRefresh>
+</xp:view>

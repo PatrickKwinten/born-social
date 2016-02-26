@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	pageTitle="Blog related interfaces">
+
+	<xc:appLayout>
+		<xp:this.facets>
+			<xp:panel xp:key="facet_1">
+				<xc:connBlogGetMyBlogs></xc:connBlogGetMyBlogs>
+				<xc:connBlogGetPopularBlogs></xc:connBlogGetPopularBlogs>
+				<xc:connBlogGetComments></xc:connBlogGetComments>
+			</xp:panel>
+			<xp:panel xp:key="facet_3">
+				
+				<xc:connBlogGetAllBlogs></xc:connBlogGetAllBlogs>
+				<xc:connBlogGetFeaturedPosts></xc:connBlogGetFeaturedPosts>
+				<xc:connBlogGetFeaturedBlogs></xc:connBlogGetFeaturedBlogs>
+			</xp:panel>
+			<xp:panel xp:key="facet_2">
+				<xc:connBlogGetPostsRecent></xc:connBlogGetPostsRecent>
+				<xc:connBlogPostNew></xc:connBlogPostNew>
+			
+				<xc:connBlogGetAllEntries
+					blogId="289284ef-5810-4b74-a8f7-8708f3e0dbdf">
+
+				</xc:connBlogGetAllEntries>
+			</xp:panel>
+		</xp:this.facets>
+	</xc:appLayout>
+</xp:view>

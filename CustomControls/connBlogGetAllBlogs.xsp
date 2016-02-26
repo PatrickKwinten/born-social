@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xe:widgetContainer id="widgetContainer1" titleBarText="All Blogs"
+		titleBarHref="http://greenhouse.lotus.com/blogs/roller-ui/allblogs?lang=en_us">
+		<xp:panel><xe:dataView id="dataView1" var="blog1" rows="3" columnTitles="true" expandedDetail="true"> 
+		<xp:this.value>
+			<![CDATA[#{javascript:ServiceBean.getAllBlogs()
+			}]]>
+		</xp:this.value>
+		<xe:this.summaryColumn>
+			<xe:viewSummaryColumn columnTitle="Blog Name">
+			</xe:viewSummaryColumn>
+		</xe:this.summaryColumn>
+		<xp:this.facets>
+			<xp:panel xp:key="noRows" id="topicsPanel2">
+				<xp:text value="No Blogs found">
+				</xp:text>
+			</xp:panel>
+			<xp:panel id="titlePanel" xp:key="summary" style="white-space:nowrap;">
+			<h4>
+				<xp:link escape="true" id="link6"
+					target="_blank" value="#{javascript:return blog1.getAlternateUrl();}"
+					text="#{javascript:return blog1.getTitle();}">
+				</xp:link></h4>
+			</xp:panel>
+			<xp:panel id="contentPanel" xp:key="detail">
+				<xp:text id="computedField2" value="Description: "
+						styleClass="lotusMeta">
+					</xp:text>
+					<xp:inputRichText id="computedField3"
+						value="#{javascript:return blog1.getSummary();}">
+					</xp:inputRichText>
+				
+			</xp:panel>
+			<xp:pager xp:key="pagerBottomRight" pageCount="5" partialRefresh="true">
+				<xp:pagerControl type="Previous"
+					id="pagerControl1">
+				</xp:pagerControl>
+				<xp:pagerControl type="Group"
+					id="pagerControl2">
+				</xp:pagerControl>
+				<xp:pagerControl type="Next"
+					id="pagerControl3">
+				</xp:pagerControl>
+			</xp:pager>
+		</xp:this.facets>
+	</xe:dataView></xp:panel>
+	</xe:widgetContainer></xp:view>

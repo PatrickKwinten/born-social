@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+		<xe:widgetContainer id="widgetContainer1"
+			titleBarText="Popular bookmarks">
+			<xe:dataView id="dataView11" var="bookmark3" rows="5"
+				columnTitles="true" expandedDetail="true">
+				<xp:this.value>
+					<![CDATA[#{javascript:											
+					ServiceBean.getPopularBookmarks();
+				}]]>
+				</xp:this.value>
+				<xe:this.summaryColumn>
+					<xe:viewSummaryColumn columnTitle="Bookmark">
+					</xe:viewSummaryColumn>
+				</xe:this.summaryColumn>
+				<xp:this.facets>
+					<xp:panel xp:key="noRows" id="panel33">
+						<xp:text value="No Bookmarks found"></xp:text>
+					</xp:panel>
+					<xp:panel id="panel34" xp:key="summary"
+						style="white-space:nowrap;">
+						<h4>
+							<xp:link escape="true" id="link12"
+								target="_blank"
+								value="#{javascript:return (bookmark3.getHref().substring(0, bookmark3.getHref().indexOf(' http', 6)))}"
+								text="#{javascript:return bookmark3.getTitle();}">
+							</xp:link>
+						</h4>
+					</xp:panel>
+					<xp:panel id="panel35" xp:key="detail">
+						<xp:label value="Description:" id="label1"
+							styleClass="lotusMeta">
+						</xp:label>
+						<xp:inputRichText id="inputRichText5"
+							value="#{javascript:return bookmark3.getContent();}">
+						</xp:inputRichText>
+					</xp:panel>
+					<xp:pager xp:key="pagerBottomRight" pageCount="5"
+						partialRefresh="true">
+						<xp:pagerControl type="Previous"
+							id="pagerControl31">
+						</xp:pagerControl>
+						<xp:pagerControl type="Group"
+							id="pagerControl32">
+						</xp:pagerControl>
+						<xp:pagerControl type="Next"
+							id="pagerControl33">
+						</xp:pagerControl>
+					</xp:pager>
+				</xp:this.facets>
+			</xe:dataView>
+			</xe:widgetContainer>
+</xp:view>

@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:dataTable
+		id="dataTable1"
+		rows="5"
+		value="#{javascript:ServiceBean.getMyCommunities();}"
+		var="comm">
+		<xp:column
+			id="getAuthor">
+			<xp:this.facets>
+				<xp:label
+					value="getAuthor()"
+					id="label3"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField3">
+				<xp:this.value><![CDATA[#{javascript:return comm.getAuthor().getName();
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+			<xp:column id="getCommunityTheme">
+			<xp:this.facets>
+				<xp:label value="getCommunityTheme()" id="label13" xp:key="header" />
+			</xp:this.facets>
+			<xp:text escape="true" id="computedField13" value="#{javascript:comm.getCommunityTheme();}" />
+
+
+		</xp:column>
+		<xp:column id="getCommunityType">
+			<xp:this.facets>
+				<xp:label value="getCommunityType()" id="label6" xp:key="header" />
+			</xp:this.facets>
+			<xp:text escape="true" id="computedField5" value="#{javascript:comm.getCommunityType();}" />
+
+
+		</xp:column><xp:column
+			id="getCommunityUrl">
+			<xp:this.facets>
+				<xp:label
+					value="getCommunityUrl()	"
+					id="label4"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField12">
+				<xp:this.value><![CDATA[#{javascript:return comm.getCommunityUrl();
+}]]></xp:this.value>
+
+			</xp:text>
+
+		</xp:column>
+		<xp:column
+			id="getCommunityUuid">
+			<xp:this.facets>
+				<xp:label
+					value="getCommunityUuid()	"
+					id="label14"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField14">
+				<xp:this.value><![CDATA[#{javascript:return comm.getCommunityUuid();
+}]]></xp:this.value>
+
+			</xp:text>
+
+		</xp:column>
+		<xp:column
+			id="getContent">
+			<xp:this.facets>
+				<xp:label
+					value="getContent()	"
+					id="label15"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField15">
+				<xp:this.value><![CDATA[#{javascript:return comm.getContent();
+}]]></xp:this.value>
+
+			</xp:text>
+
+		</xp:column>
+		<xp:column
+			id="getContributor">
+			<xp:this.facets>
+				<xp:label
+					value="getContributor().getName()"
+					id="label5"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField4">
+				<xp:this.value><![CDATA[#{javascript:return comm.getContributor().getName();
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getForums">
+			<xp:this.facets>
+				<xp:label
+					value="getForums()"
+					id="label16"
+					xp:key="header" />
+			</xp:this.facets>
+
+			<xp:text
+				escape="false"
+				id="computedField16">
+				<xp:this.value><![CDATA[#{javascript:var d = comm.getForums();
+var output = "";
+for(i=0;i<d.length;i++){
+ output += d[i] + "<br/>";
+}
+//return d;
+return output
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getForumTopics">
+			<xp:this.facets>
+				<xp:label
+					value="getForumTopics()"
+					id="label17"
+					xp:key="header" />
+			</xp:this.facets>
+
+			<xp:text
+				escape="false"
+				id="computedField17">
+				<xp:this.value><![CDATA[#{javascript:var d = comm.getForumTopics();
+var output = "";
+for(i=0;i<d.length;i++){
+ output += d[i] + "<br/>";
+}
+//return d;
+return output
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getLogoUrl">
+			<xp:this.facets>
+				<xp:label
+					value="getLogoUrl()"
+					id="label18"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField18">
+				<xp:this.value><![CDATA[#{javascript:return comm.getLogoUrl();
+}]]></xp:this.value>
+				
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getMembers">
+			<xp:this.facets>
+				<xp:label
+					value="getMembers()"
+					id="label7"
+					xp:key="header" />
+			</xp:this.facets>
+
+			<xp:text
+				escape="false"
+				id="computedField6">
+				<xp:this.value><![CDATA[#{javascript:var d = comm.getMembers();
+var output = "";
+for(i=0;i<d.length;i++){
+ output += d[i] + "<br/>";
+}
+//return d;
+return output
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getMemberCount">
+			<xp:this.facets>
+				<xp:label
+					value="getMemberCount() "
+					id="label8"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField7">
+				<xp:this.value><![CDATA[#{javascript:return comm.getMemberCount();
+}]]></xp:this.value>
+				<xp:this.converter>
+					<xp:convertNumber
+						type="number"
+						integerOnly="true" />
+
+				</xp:this.converter>
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getMembersUrl">
+			<xp:this.facets>
+				<xp:label
+					value="getMembersUrl() "
+					id="label9"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField8">
+				<xp:this.value><![CDATA[#{javascript:return comm.getMembersUrl();
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column id="getPublished">
+			<xp:this.facets>
+				<xp:label value="getPublished()" id="label2" xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField2"
+				value="#{javascript:comm.getPublished();}">
+				<xp:this.converter>
+					<xp:convertDateTime
+						type="both"
+						dateStyle="full">
+					</xp:convertDateTime>
+				</xp:this.converter>
+			</xp:text>
+
+
+		</xp:column>
+		
+		<xp:column
+			id="getSubCommunities">
+			<xp:this.facets>
+				<xp:label
+					value="getSubCommunities()"
+					id="label19"
+					xp:key="header" />
+			</xp:this.facets>
+
+			<xp:text
+				escape="false"
+				id="computedField19">
+				<xp:this.value><![CDATA[#{javascript:var d = comm.getSubCommunities();
+var output = "";
+for(i=0;i<d.length;i++){
+ output += d[i] + "<br/>";
+}
+//return d;
+return output
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		
+		<xp:column
+			id="getSummary">
+			<xp:this.facets>
+				<xp:label
+					value="getSummary()"
+					id="label10"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField9"
+				value="#{javascript:comm.getSummary();}" />
+
+
+		</xp:column>
+		<xp:column
+			id="getTags">
+			<xp:this.facets>
+				<xp:label
+					value="getTags()"
+					id="label11"
+					xp:key="header" />
+			</xp:this.facets>
+
+			<xp:text
+				escape="false"
+				id="computedField10">
+				<xp:this.value><![CDATA[#{javascript:var d = comm.getTags();
+var output = "";
+for(i=0;i<d.length;i++){
+ output += d[i] + "<br/>";
+}
+//return d;
+return output
+}]]></xp:this.value>
+
+			</xp:text>
+		</xp:column>
+		<xp:column
+			id="getTitle">
+			<xp:this.facets>
+				<xp:label
+					value="getTitle()"
+					id="label12"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField11"
+				value="#{javascript:comm.getTitle;}" />
+
+
+		</xp:column>
+		
+		<xp:column
+			id="getUpdated">
+			<xp:this.facets>
+				<xp:label
+					value="getUpdated() "
+					id="label1"
+					xp:key="header" />
+			</xp:this.facets>
+			<xp:text
+				escape="true"
+				id="computedField1"
+				value="#{javascript:comm.getUpdated();}" />
+
+
+		</xp:column>
+		
+	</xp:dataTable>
+	<xp:br></xp:br>
+	<xe:widgetContainer
+		id="widgetContainer1"
+		titleBarText="My communities">
+		<xp:panel>
+			<xe:dataView
+				id="dataView1"
+				value="#{javascript:ServiceBean.getMyCommunities();}"
+				var="comm"
+				rows="5"
+				expandedDetail="true"
+				columnTitles="true">
+				<xp:this.facets>
+					<xe:pagerSizes
+						id="pagerSizes1"
+						xp:key="pagerBottomLeft"
+						for="dataView1">
+					</xe:pagerSizes>
+					<xp:image
+						url="#{javascript:return comm.getLogoUrl();}"
+						id="image1"
+						xp:key="icon"
+						style="height:64px;width:64px">
+					</xp:image>
+					<xp:panel xp:key="detail">
+						<xp:panel>
+							<xp:text
+								escape="true"
+								id="commMemberCount">
+								<xp:this.value><![CDATA[#{javascript:return comm.getMemberCount();
+}]]></xp:this.value>
+								<xp:this.converter>
+									<xp:convertNumber
+										type="number"
+										integerOnly="true" />
+
+								</xp:this.converter>
+							</xp:text>
+							&#160; people
+							<xp:span
+								role="presentation"
+								styleClass="lotusDivider">
+								|
+							</xp:span>
+							Updated by:&#160;
+
+
+
+
+
+
+
+							<xp:link
+								escape="true"
+								text="#{javascript:return comm.getContributor().getName();}"
+								id="commMemberUpdatedBy">
+								<xp:this.value><![CDATA[#{javascript:
+try {
+    var colleagueId = comm.getContributor().getUserid() 
+    var profileService = new com.ibm.sbt.services.client.connections.profiles.ProfileService();
+		   
+    var profile = profileService.getProfile(colleagueId);
+    var profileUrl = profile.getProfileUrl().replace("/atom/profile.do", "/html/profileView.do");
+
+    return profileUrl;
+} catch (exception) {
+    println("Colleague Profile error: " + exception);
+    return null;
+}		}]]></xp:this.value>
+							</xp:link>
+							<xp:span
+								role="presentation"
+								styleClass="lotusDivider">
+								|
+							</xp:span>
+
+
+							<xp:text
+								escape="true"
+								id="commUpdatedBy"
+								value="#{javascript:comm.getUpdated();}">
+								<xp:this.converter>
+									<xp:convertDateTime
+										type="both"
+										dateStyle="full"
+										timeStyle="short">
+									</xp:convertDateTime>
+								</xp:this.converter>
+							</xp:text>
+							<xp:span
+								role="presentation"
+								styleClass="lotusDivider">
+								|
+							</xp:span>
+							<xp:repeat
+								id="repeat1"
+								rows="30"
+								value="#{javascript:comm.getTags();}"
+								var="rowData"
+								indexVar="rowIndex"
+								disableTheme="true"
+								disableOutputTag="true">
+								<xp:link
+									escape="true"
+									text="#{javascript:rowData}"
+									id="link1"
+									styleClass="tagLink">
+								</xp:link>
+								&#160;
+							</xp:repeat>
+						</xp:panel>
+						<xp:panel tagName="div">
+							<xp:text
+								escape="true"
+								id="commSummary"
+								value="#{javascript:comm.getSummary();}">
+							</xp:text>
+						</xp:panel>
+
+					</xp:panel>
+					<xp:panel
+						id="titlePanel"
+						style="white-space:nowrap;"
+						xp:key="summary">
+						<h4>
+							<xp:link
+								escape="true"
+								id="link6"
+								target="_blank"
+								value="#{javascript:return comm.getCommunityUrl();}"
+								text="#{javascript:return comm.getTitle();}">
+							</xp:link>
+						</h4>
+					</xp:panel>
+				</xp:this.facets>
+				<xe:this.extraColumns>
+					<xe:viewExtraColumn
+						value="#{javascript:comm.getCommunityType();}"
+						columnTitle="Type">
+
+					</xe:viewExtraColumn>
+
+					<xe:viewExtraColumn
+						value="#{javascript:comm.getForumTopics().length;}"
+						columnTitle="Topics">
+						<xp:this.converter>
+							<xp:convertNumber
+								type="number"
+								integerOnly="true" />
+
+						</xp:this.converter>
+
+					</xe:viewExtraColumn>
+
+				</xe:this.extraColumns>
+				<xp:this.facets>
+					<xp:pager
+						xp:key="pagerBottomRight"
+						pageCount="5"
+						partialRefresh="true">
+						<xp:pagerControl
+							type="Previous"
+							id="pagerControl4">
+						</xp:pagerControl>
+						<xp:pagerControl
+							type="Group"
+							id="pagerControl5">
+						</xp:pagerControl>
+						<xp:pagerControl
+							type="Next"
+							id="pagerControl6">
+						</xp:pagerControl>
+					</xp:pager>
+				</xp:this.facets>
+
+			</xe:dataView>
+		</xp:panel>
+	</xe:widgetContainer>
+</xp:view>

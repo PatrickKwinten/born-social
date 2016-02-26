@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom" pageTitle="Profile related interfaces">
+
+	<xc:appLayout><xp:this.facets>
+	<xp:panel xp:key="facet_3">
+		<xc:connProfileGetColleaguesPhoto></xc:connProfileGetColleaguesPhoto></xp:panel>
+	<xp:panel xp:key="facet_2">
+		<xc:connProfileGetMyColleagues widgetTitle="Community Files"></xc:connProfileGetMyColleagues>
+		<xc:connProfileGetMyColleguesId></xc:connProfileGetMyColleguesId>
+		<xc:connProfileColleaguesSearch></xc:connProfileColleaguesSearch>
+	</xp:panel>
+	<xp:panel xp:key="facet_1">
+		<xc:connProfileGetMyProfile widgetTitle="My Profile"></xc:connProfileGetMyProfile></xp:panel></xp:this.facets></xc:appLayout></xp:view>

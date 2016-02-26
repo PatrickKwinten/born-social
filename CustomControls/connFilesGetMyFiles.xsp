@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xe:widgetContainer id="widgetContainer1"
+		titleBarText="#{javascript:return compositeData.widgetTitle;}">
+		<xp:panel>
+		<xe:dataView id="dataView1" var="file" rows="5"
+			columnTitles="true" styleClass="filesDataView">
+			<xe:this.extraColumns>
+				<xe:viewExtraColumn columnTitle="Filetype">
+				</xe:viewExtraColumn>
+				<xe:viewExtraColumn columnTitle="Created"></xe:viewExtraColumn>
+				<xe:viewExtraColumn columnTitle="Size">
+				</xe:viewExtraColumn>
+				
+			</xe:this.extraColumns>
+
+			<xe:this.summaryColumn>
+				<xe:viewSummaryColumn columnTitle="Filename">
+				</xe:viewSummaryColumn>
+			</xe:this.summaryColumn>
+			<xp:this.value><![CDATA[#{javascript:ServiceBean.getMyFiles();
+        }]]></xp:this.value>
+			<xp:this.facets>
+				
+				<xp:panel xp:key="noRows" id="topicsPanel2">
+					<xp:div styleClass="lotusWidgetBody">
+						<xp:text>
+							<xp:this.value>
+								<![CDATA[#{javascript:
+														return (viewScope.myFilesAvailable ? "No files found." : "My Files unavailable.");
+													}]]>
+							</xp:this.value>
+						</xp:text>
+					</xp:div>
+				</xp:panel>
+				<xp:panel id="summaryPanel" xp:key="summary"
+					style="width:50%;white-space:nowrap;">
+					<h4><xp:link styleClass="dataViewLink" escape="true"
+						id="link7" target="_blank"
+						text="#{javascript:return file.getTitle();}">
+						<xp:this.value><![CDATA[#{javascript:return file.getContentUrl();}]]>
+						</xp:this.value>
+					</xp:link></h4>
+				</xp:panel>
+				<xp:panel id="typePanel" xp:key="extra0"
+					style="width: 20%;white-space:nowrap;">
+					<xp:text>
+						<xp:this.value><![CDATA[#{javascript:return file.getType();}]]></xp:this.value>
+					</xp:text>
+				</xp:panel>
+				<xp:panel id="sizePanel" xp:key="extra2"
+					style="width: 15%;white-space:nowrap;">
+					<xp:text>
+						<xp:this.value><![CDATA[#{javascript:
+												var size = file.getSize();
+												var kilobyte = 1024;
+												var megabyte = kilobyte *1024;
+												if(size < kilobyte) {
+													return (size + " B");
+												}else if(size < megabyte) {
+													return (Math.round(size/kilobyte) + " KB");
+												}else {
+													return (Math.round(size/megabyte) + " MB");
+												}}]]>
+						</xp:this.value>
+					</xp:text>
+				</xp:panel>
+				<xp:panel id="panel1" xp:key="extra1"
+					style="width: 15%;white-space:nowrap;">
+						<xp:text escape="true" id="computedField3" value="#{javascript:file.getCreated()}"></xp:text>
+				</xp:panel>
+			</xp:this.facets>
+		</xe:dataView>
+		</xp:panel>
+	</xe:widgetContainer>
+
+</xp:view>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	pageTitle="Bookmarks related interfaces">
+
+	<xc:appLayout>
+		<xp:this.facets>
+			<xp:panel xp:key="facet_1">
+
+				<xc:connBookGetAllBookmarks></xc:connBookGetAllBookmarks>
+			</xp:panel>
+			<xp:panel xp:key="facet_3">
+				<xc:connBookClicks></xc:connBookClicks>
+			</xp:panel>
+			<xp:panel xp:key="facet_2">
+				<xc:connBookGetMyBookMarks></xc:connBookGetMyBookMarks>
+				<xc:connBookGetPopularBookMarks></xc:connBookGetPopularBookMarks>
+			</xp:panel>
+		</xp:this.facets>
+	</xc:appLayout>
+</xp:view>

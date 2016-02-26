@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:viewScope.put("colleagueName","")}]]></xp:this.beforePageLoad>
+		
+<xe:widgetContainer
+				id="widgetContainer1"
+				titleBarText="Search colleagues">
+				<xp:panel>
+					<xp:panel id="pnlSearch">
+						<xp:inputText
+							id="inputText1"
+							value="#{viewScope.colleagueName}"
+							style="width:200px;">
+							<xp:this.attrs>
+								<xp:attr
+									name="placeholder"
+									value="enter a part of the name string">
+								</xp:attr>
+							</xp:this.attrs>
+						</xp:inputText>&#160;
+						<xp:button
+							value="Search"
+							id="button1">
+							<xp:eventHandler
+								event="onclick"
+								submit="true"
+								refreshMode="partial"
+								refreshId="colleaguesDataView">
+							</xp:eventHandler>
+						</xp:button>
+						<xp:panel>
+							<xe:dataView
+								id="colleaguesDataView"
+								var="colleague"
+								rows="5"
+								columnTitles="true"
+								styleClass="membersDataView">
+
+								<xe:this.summaryColumn>
+									<xe:viewSummaryColumn columnTitle="Colleague"></xe:viewSummaryColumn>
+								</xe:this.summaryColumn>
+								
+								<xp:this.value><![CDATA[#{javascript:var connProfSvc = new com.ibm.sbt.services.client.connections.profiles.ProfileService();
+var params = new java.util.HashMap();
+var searchName = viewScope.get("colleagueName");
+
+if (searchName == "") {
+    params.put("name", '===============');
+    var profiles = connProfSvc.searchProfiles(params);
+} else {
+    params.put("name", searchName);
+    var profiles = connProfSvc.searchProfiles(params);
+}
+
+return profiles;}]]></xp:this.value>
+								<xp:this.facets>
+									<xp:pager
+										pageCount="5"
+										partialRefresh="true"
+										xp:key="pagerBottomRight">
+										<xp:pagerControl
+											type="Previous"
+											id="pagerControl31">
+										</xp:pagerControl>
+										<xp:pagerControl
+											type="Group"
+											id="pagerControl32">
+										</xp:pagerControl>
+										<xp:pagerControl
+											type="Next"
+											id="pagerControl33">
+										</xp:pagerControl>
+									</xp:pager>
+
+
+									<xp:image
+										id="image1"
+										xp:key="icon"
+										alt="#{javascript:return colleague.getName();}"
+										style="height:55px;width:55px">
+										<xp:this.url><![CDATA[#{javascript:var colleagueId = colleague.getUserid();
+var profileService = new  com.ibm.sbt.services.client.connections.profiles.ProfileService();
+var profile = profileService.getProfile(colleagueId);
+var profileUrl = profile.getThumbnailUrl()
+return profileUrl}]]></xp:this.url>
+									</xp:image>
+									<xp:panel
+										xp:key="noRows"
+										id="noMembersPanel">
+										<xp:div styleClass="xlEmptyFacet">
+											<xp:text>
+												<xp:this.value>
+													<![CDATA[#{javascript:
+														return (viewScope.myNetworkAvailable ? "No colleagues found." : "Colleagues list unavailable.");
+													}]]>
+												</xp:this.value>
+											</xp:text>
+										</xp:div>
+									</xp:panel>
+									<xp:panel
+										id="namePanel"
+										xp:key="summary"
+										style="white-space:nowrap;">
+										<h4>
+											<xp:link
+												escape="true"
+												id="memberLink"
+												target="_blank"
+												text="#{javascript:return colleague.getName();}"
+												styleClass="dataViewLink">
+
+												<xp:this.value><![CDATA[#{javascript:try {
+    var colleagueId = colleague.getUserid();
+    var profile = profileService.getProfile(colleagueId);
+    var profileUrl = profile.getProfileUrl().replace("/atom/profile.do", "/html/profileView.do");
+
+    return profileUrl;
+} catch (exception) {
+    println("Colleague Profile error: " + exception);
+    return null;
+}											}]]></xp:this.value>
+											</xp:link>
+										</h4>
+										<xp:text
+											escape="true"
+											id="jobLabel"
+											value="Job Title: "
+											rendered="false">
+										</xp:text>
+										<xp:text
+											escape="true"
+											id="jobValue"
+											value="#{javascript:return colleague.getJobTitle();}"
+											rendered="false">
+										</xp:text>
+									</xp:panel>
+									<xp:panel
+										id="emailPanel"
+										xp:key="extra0"
+										style="width:45%;white-space:nowrap;">
+										<xp:link
+											escape="true"
+											id="link1"
+											target="_blank"
+											text="#{javascript:return colleague.getEmail();}">
+											<xp:this.value><![CDATA[#{javascript:return "mailto:" + colleague.getEmail();}]]></xp:this.value>
+										</xp:link>
+									</xp:panel>
+									<xp:panel
+										id="panel1"
+										xp:key="extra1"
+										style="width:45%;white-space:nowrap;">
+										<xp:text
+											escape="true"
+											id="computedField1"
+											value="#{javascript:colleague.getTelephoneNumber();}">
+										</xp:text>
+									</xp:panel>
+								</xp:this.facets>
+							</xe:dataView></xp:panel></xp:panel></xp:panel>
+			</xe:widgetContainer>
+</xp:view>

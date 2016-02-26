@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+<xe:widgetContainer
+			id="widgetContainer1"
+			titleBarText="Collegues gallery">
+			<xp:panel>
+				<xp:repeat
+					id="repeat1"
+					rows="5"
+					value="#{javascript:
+						var profileService = new com.ibm.sbt.services.client.connections.profiles.ProfileService();
+var myProfile = profileService.getMyProfile();
+var user = myProfile.getUserid();			
+var colleagues = profileService.getColleagues(user);		
+						
+						return colleagues;
+						}"
+					var="colleague"
+					repeatControls="true">
+					<xp:image
+						alt="no image"
+						id="image1"
+						title="#{javascript:return colleague.getName();}">
+						<xp:this.url>
+							<![CDATA[#{javascript: 						
+						var profile = profileService.getProfile(colleague.getUserid());
+						var image = profile.getThumbnailUrl();
+						return image;}]]>
+						</xp:this.url>
+					</xp:image>
+				</xp:repeat>
+				<xp:pager
+					layout="Previous Group Next"
+					partialRefresh="true"
+					id="pager1"
+					for="repeat1">
+				</xp:pager>
+			</xp:panel>
+		</xe:widgetContainer>
+</xp:view>

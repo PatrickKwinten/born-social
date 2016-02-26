@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xe:widgetContainer
+		id="widgetContainer1"
+		titleBarText="My topics">
+		<xp:panel>
+			<xe:dataView
+				id="dataView1"
+				var="forums"
+				rows="3"
+				columnTitles="true"
+				expandedDetail="true">
+				<xe:this.extraColumns>
+					<xe:viewExtraColumn
+						value="#{javascript:forums.getPublished();}"
+						columnTitle="Published">
+					</xe:viewExtraColumn>
+					<xe:viewExtraColumn
+						value="#{javascript:forums.getUpdated();}"
+						columnTitle="Updated">
+					</xe:viewExtraColumn>
+				</xe:this.extraColumns>
+				<xp:this.value>
+					<![CDATA[#{javascript:ServiceBean.getMyForumsTopics()
+			}]]>
+				</xp:this.value>
+				<xe:this.summaryColumn>
+					<xe:viewSummaryColumn columnTitle="Topic" />
+
+				</xe:this.summaryColumn>
+				<xp:this.facets>
+					<xp:panel
+						xp:key="noRows"
+						id="topicsPanel2">
+						<xp:text value="No Forums found" />
+
+					</xp:panel>
+					<xp:panel
+						id="titlePanel"
+						xp:key="summary"
+						style="white-space:nowrap;">
+						<h4>
+							<xp:link
+								escape="true"
+								id="link6"
+								target="_blank"
+								value="#{javascript:return forums.getAlternateUrl();}"
+								text="#{javascript:return forums.getTitle();}" />
+						</h4>
+					</xp:panel>
+					<xp:panel
+						id="contentPanel"
+						xp:key="detail">
+						<xp:text
+							id="computedField2"
+							value="Description: "
+							styleClass="lotusMeta" />
+
+						<xp:inputRichText
+							id="computedField3"
+							value="#{javascript:return forums.getContent();}" />
+
+
+
+					</xp:panel>
+					<xp:pager
+						xp:key="pagerBottomRight"
+						pageCount="5"
+						partialRefresh="true">
+						<xp:pagerControl
+							type="Previous"
+							id="pagerControl1" />
+
+						<xp:pagerControl
+							type="Group"
+							id="pagerControl2" />
+
+						<xp:pagerControl
+							type="Next"
+							id="pagerControl3" />
+
+					</xp:pager>
+				</xp:this.facets>
+
+			</xe:dataView>
+		</xp:panel>
+	</xe:widgetContainer>
+</xp:view>

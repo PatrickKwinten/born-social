@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xc:appLayout><xp:this.facets>
+	<xc:connForumGetMyForumsTopics xp:key="facet_2"></xc:connForumGetMyForumsTopics>
+	<xc:connForumGetMyForums xp:key="facet_1"></xc:connForumGetMyForums></xp:this.facets></xc:appLayout></xp:view>

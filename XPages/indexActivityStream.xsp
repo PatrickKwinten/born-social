@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	viewState="nostate">
+
+	<xc:appLayout>
+		<xp:this.facets>
+			<xp:panel xp:key="facet_2">
+				<xc:connActivStreamGetUpdatesIFollow></xc:connActivStreamGetUpdatesIFollow>
+				<xc:connActivStreamGetMyUpdates></xc:connActivStreamGetMyUpdates>
+				<xc:connActivStreamGetUpdatesMyNetwork></xc:connActivStreamGetUpdatesMyNetwork>
+				<xc:connActivStreamGetStatusUpdatesMyNetwork></xc:connActivStreamGetStatusUpdatesMyNetwork>
+				<xc:connActivStreamGetUpdatesMyNetwork></xc:connActivStreamGetUpdatesMyNetwork>
+				<xc:connActivStreamGetAllUpdates></xc:connActivStreamGetAllUpdates>
+			</xp:panel>
+		</xp:this.facets>
+	</xc:appLayout>
+</xp:view>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xe:widgetContainer id="widgetContainer1"
+		titleBarText="#{javascript:return compositeData.widgetTitle;}">
+
+<xp:table>
+			<xp:tr>
+				<xp:td>
+					<xp:label
+						value="Name:"
+						id="label1" style="font-weight:bold">
+					</xp:label>
+				</xp:td>
+				<xp:td>
+					<xp:link
+						escape="true"
+						text="#{javascript:ServiceBean.getMyProfile().getName()}"
+						id="link3"
+						value="#{javascript:ServiceBean.getMyProfile().getProfileUrl()}">
+					</xp:link>
+				</xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td>
+					<xp:label
+						value="Email:"
+						id="label2" style="font-weight:bold">
+					</xp:label>
+				</xp:td>
+				<xp:td>
+					<xp:text
+						escape="true"
+						id="computedField4"
+						value="#{javascript:ServiceBean.getMyProfile().getEmail()}">
+					</xp:text>
+				</xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td>
+					<xp:label
+						value="Id:"
+						id="label3" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField12" value="#{javascript:ServiceBean.getMyProfile().getUserid()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td><xp:label value="Department:" id="label4" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField13" value="#{javascript:ServiceBean.getMyProfile().getDepartment()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td><xp:label value="Building:" id="label5" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField14" value="#{javascript:ServiceBean.getMyProfile().getBuilding()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td><xp:label value="Floor:" id="label6" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField15" value="#{javascript:ServiceBean.getMyProfile().getFloor()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td valign="top"><xp:label value="Address:" id="label7" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:repeat id="repeat2" rows="30" value="#{javascript:ServiceBean.getMyProfile().getAddress()}" var="rowData" indexVar="rowIndex">
+					<xp:panel>
+						<xp:text escape="true" id="computedField16">
+							<xp:this.value><![CDATA[#{javascript:rowData}]]></xp:this.value>
+						</xp:text>-
+						<xp:text escape="true" id="computedField17" value="#{javascript:rowIndex}">
+						</xp:text>
+					<xp:br></xp:br></xp:panel>
+				</xp:repeat></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td><xp:label value="Telephone:" id="label8" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField18" value="#{javascript:ServiceBean.getMyProfile().getTelephoneNumber()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td><xp:label value="Summary:" id="label9" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td><xp:text escape="true" id="computedField19" value="#{javascript:ServiceBean.getMyProfile().getSummary()}">
+				</xp:text></xp:td>
+			</xp:tr>
+			<xp:tr>
+				<xp:td valign="top"><xp:label value="Thumbnail:" id="label10" style="font-weight:bold">
+					</xp:label></xp:td>
+				<xp:td>
+					<xp:image
+						url="#{javascript:ServiceBean.getMyProfile().getThumbnailUrl()}"
+						id="image2">
+					</xp:image></xp:td>
+			</xp:tr>
+		</xp:table>
+		
+
+	</xe:widgetContainer>
+
+</xp:view>

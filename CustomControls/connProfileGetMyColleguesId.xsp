@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	
+	<xe:widgetContainer
+		id="widgetContainer1"
+		titleBarText="My collegues ID's">
+		<xp:repeat
+			id="repeat1"
+			rows="5"
+			var="colleague"
+			repeatControls="true">
+			<xp:this.value><![CDATA[#{javascript:var profileService = new com.ibm.sbt.services.client.connections.profiles.ProfileService();
+var myProfile = profileService.getMyProfile();
+var user = myProfile.getUserid();			
+var colleagues = profileService.getColleagues(user);
+return colleagues;
+		    }]]></xp:this.value>
+
+			<xp:link
+				escape="true"
+				text="#{javascript:colleague.getUserid()}"
+				id="link1"
+				target="_blank"
+				title="#{javascript:return colleague.getName();}">
+				<xp:this.value><![CDATA[#{javascript:try {
+    var colleagueId = colleague.getUserid();
+    var profile = profileService.getProfile(colleagueId);
+    var profileUrl = profile.getProfileUrl().replace("/atom/profile.do", "/html/profileView.do");
+
+    return profileUrl;
+} catch (exception) {
+    println("Colleague Profile error: " + exception);
+    return null;
+}}]]></xp:this.value>
+			</xp:link>
+			<br />
+
+
+
+		</xp:repeat>
+		<xp:pager
+			layout="Previous Group Next"
+			partialRefresh="true"
+			id="pager1"
+			for="repeat1">
+		</xp:pager>
+	</xe:widgetContainer></xp:view>

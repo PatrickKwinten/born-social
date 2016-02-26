@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xe:widgetContainer id="widgetContainer1"
+		titleBarText="Public communities">
+		<xp:dataTable
+			id="dataTable1"
+			var="comm"
+			rows="5">
+			<xp:this.value><![CDATA[#{javascript:
+	ServiceBean.getAllCommunities();}]]></xp:this.value>
+			<xp:column id="column3">
+				<xp:this.facets>
+
+
+					<xp:label
+						value="Community"
+						id="label2"
+						xp:key="header">
+					</xp:label>
+				</xp:this.facets>
+				<h4>
+					<xp:link
+						escape="true"
+						text="#{javascript:comm.getTitle()}"
+						id="link1"
+						value="#{javascript:comm.getCommunityUrl()}"
+						title="Open community...">
+					</xp:link>
+				</h4>
+
+			</xp:column>
+			<xp:column id="column1">
+				<xp:this.facets>
+
+					<xp:label
+						value="Creator"
+						id="label1"
+						xp:key="header">
+					</xp:label>
+				</xp:this.facets>
+
+				<xp:text
+					escape="true"
+					id="computedField3">
+					<xp:this.value><![CDATA[#{javascript:var d = comm.getContributor().getName();
+return d;
+}]]></xp:this.value>
+					<xp:this.converter>
+						<xp:convertDateTime
+							type="date"
+							dateStyle="short">
+						</xp:convertDateTime>
+					</xp:this.converter>
+				</xp:text>
+			</xp:column>
+			<xp:column id="column2">
+				<xp:this.facets>
+					<xp:label
+						value="Type"
+						id="label3"
+						xp:key="header">
+					</xp:label>
+				</xp:this.facets>
+
+				<xp:text
+					escape="true"
+					id="computedField2"
+					value="#{javascript:comm.getCommunityType() }">
+					<xp:this.converter>
+						<xp:convertNumber
+							type="number"
+							integerOnly="true">
+						</xp:convertNumber>
+					</xp:this.converter>
+				</xp:text>
+			</xp:column>
+			
+
+		</xp:dataTable><xp:pager
+				layout="Previous Group Next"
+				partialRefresh="true"
+				id="pager1"
+				for="dataTable1">
+			</xp:pager>
+	</xe:widgetContainer>
+</xp:view>
